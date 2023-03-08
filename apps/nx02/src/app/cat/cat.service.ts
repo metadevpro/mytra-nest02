@@ -10,8 +10,9 @@ export class CatService {
     { id: '3', name: 'Missi', color: 'White' },
   ];
 
-  getAll(): CatDto[] {
-    return this.cats;
+  getAll(offset: number, limit: number): CatDto[] {
+    // todo: offset. limit
+    return this.cats; // .skip(offset).take(limit);
   }
   getById(id: string): CatDto | undefined {
     const cat = this.cats.find((c) => c.id === id);

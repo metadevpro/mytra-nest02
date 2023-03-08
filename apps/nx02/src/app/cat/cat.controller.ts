@@ -1,14 +1,17 @@
 import {
   Body,
   Controller,
+  DefaultValuePipe,
   Get,
   NotFoundException,
   Param,
   ParseIntPipe,
   Post,
+  Query,
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { LimitValuePipe } from '../pipes/limit-value/limit-value.pipe';
 import { CatDto, CreateCatDto } from './cat.dto';
 import { CatService } from './cat.service';
 
@@ -28,8 +31,17 @@ export class CatController {
   // }
 
   @Get()
-  findAll(): CatDto[] {
-    return this.catService.getAll();
+  findAll(
+    @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
+    @Query(
+      'limit',
+      new DefaultValuePipe(25),
+      ParseIntPipe,
+      new LimitValuePipe(500)
+    )
+    limit: number
+  ): CatDto[] {
+    return this.catService.getAll(offset, limit);
   }
 
   @Get(':id')

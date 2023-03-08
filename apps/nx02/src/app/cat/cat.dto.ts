@@ -7,7 +7,7 @@ export class CreateCatDto {
   @IsInt()
   age?: number;
 
-  @IsString()
+  @IsString({ message: 'Alimentacion erronea' })
   @IsOptional()
   breed?: string;
 }
