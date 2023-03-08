@@ -60,3 +60,20 @@ f(req, next) => {
   return res.bofy;
 
 }
+
+
+PIPEs
+
+numer
+dates  ISO 8601  2023-03-31 ->  hora local  2023-03-31T23:59:59Z 
+
+BODY
+{
+  createdAt: '2023-03-31T23:59:59Z '
+  modifiedAt: '2023-03-31T23:59:59Z'
+}
+
+coass DTOMessaa {
+  createdAt: Date;
+
+}

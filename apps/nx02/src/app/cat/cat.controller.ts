@@ -4,6 +4,7 @@ import {
   Get,
   NotFoundException,
   Param,
+  ParseIntPipe,
   Post,
   Res,
 } from '@nestjs/common';
@@ -16,9 +17,15 @@ export class CatController {
   constructor(private catService: CatService) {}
 
   @Post()
-  create(@Body() payload: CreateCatDto) {
-    // todo ...
+  create(@Body() cat: CreateCatDto) {
+    return this.catService.create(cat);
   }
+
+  // Pipe de validacion aplicado solo aqui
+  // @Post()
+  // create(@Body(new ValidationPipe()) cat: CreateCatDto) {
+  //   return this.catService.create(cat);
+  // }
 
   @Get()
   findAll(): CatDto[] {
@@ -26,8 +33,8 @@ export class CatController {
   }
 
   @Get(':id')
-  findOne(@Param() params, @Res() res: Response) {
-    const id = params.id;
+  findOne(@Param('id', ParseIntPipe) idNumber: number, @Res() res: Response) {
+    const id = idNumber.toString();
     const cat = this.catService.getById(id);
 
     if (cat) {
