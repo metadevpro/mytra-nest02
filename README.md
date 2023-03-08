@@ -77,3 +77,38 @@ coass DTOMessaa {
   createdAt: Date;
 
 }
+
+
+app1.acme.com -> 
+  ang
+  nest JWT 20m
+id.acme.com ->
+    LDAP -  
+    user/pass
+app1.acme.com
+
+ng -> app1.acme.com  ->
+
+   Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+
+
+user,  hash, 2FA
+central usuario
+SSO
+  50
+
+  google  ->  google -> app1  pjmolina@gmail.com   Autenticando       pjmolina@gmail.com app1 operador
+  github
+  facebook
+  twitter
+id.metadev.pro  openid
+
+
+JWT
+OAuth2
+OpenID
+KeyCloak
+Saml2
+
+nest -> express -> passport -> 
