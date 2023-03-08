@@ -24,3 +24,39 @@ class C1 {
 
 }
 
+nx
+  ng
+    jest
+    cypress
+  nest
+    jest
+    cypress
+
+Controlador
+
+nestjs
+  express
+  fastlify
+
+app.get('/version', req, res) => {
+  res.status(200).json({ version: '1.2.3'})
+
+}
+
+CORS
+Logging
+Autenticacion
+Serizador XML
+
+req -> M1 -> M2 -> M3 -> M4  -> Controlardor
+
+
+f(req, next) => {
+  req.body -> JSON 
+  const res = next()
+
+  res.a = 111
+
+  return res.bofy;
+
+}
