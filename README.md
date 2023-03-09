@@ -121,3 +121,41 @@ Endpoint -> User->permisos  /cat wr   lista blanca/negra
 KeyCloack
 
 RBAC
+
+callback  openfile('a.mpg4', (err, data) => {})
+
+promise  a.then(data => {}).catch(err =>{}).finally()
+  lanzas -----------  b  m
+
+rxjs
+
+Observables
+  const sub = ob.subscribe({
+    next: (data) => {},  N
+    error: (err) => {}
+    done: () => {}
+  })
+
+  const ob1 = from([1,2,3,4,5,6]).pipe(
+    first(),
+    map(it => it * 2),
+    map(it => it * 3),
+    tap(it => it )
+    catchError()
+  );
+
+  ob1.subscribe({
+     next: (data) => {
+      console.log(data);  // 2 2 3 4 5 12
+     }
+  })
+
+  sub.unsubuscribe();
+
+Ws -> d1 d32 d323 suscrito
+
+[1,2,3,4, 5,6,7, 5].max(7)
+
+programacion funcional
+iteradores
+subscriptor/publicador
