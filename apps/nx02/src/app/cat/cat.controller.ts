@@ -50,7 +50,10 @@ export class CatController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) idNumber: number, @Res() res: Response) {
+  findOne(
+    @Param('id', ParseIntPipe) idNumber: number,
+    @Res() res: Response
+  ): void {
     const id = idNumber.toString();
     const cat = this.catService.getById(id);
 

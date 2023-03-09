@@ -2,14 +2,14 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CatController } from './cat/cat.controller';
-import { CatService } from './cat/cat.service';
+import { CatModule } from './cat/cat.module';
 import { LoggerMiddleware } from './middleware/log.middleware';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController, CatController],
-  providers: [AppService, CatService, LoggerMiddleware],
+  imports: [CatModule, SharedModule],
+  controllers: [AppController],
+  providers: [AppService, LoggerMiddleware],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

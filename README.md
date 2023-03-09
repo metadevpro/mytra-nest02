@@ -159,3 +159,44 @@ Ws -> d1 d32 d323 suscrito
 programacion funcional
 iteradores
 subscriptor/publicador
+---
+
+
+
+App
+  ModuloPpal
+  StoreModule
+    import Shared
+  CheckoutModule
+  RRHHModule
+  cronModule
+  SharedModule
+    pipe
+    directr
+
+conv
+env
+  rrhh enabled /disabled
+
+
+angular  / -> /store
+
+
+backend
+  carga perezosa
+
+nest
+  AppModule
+  CatModule
+    import SharedModule
+  DogModule
+    import SharedModule
+  SharedModule
+    shred
+
+
+Holliwood Principle. 
+
+nest ->  service  implements OnInit
+          onInit()
+          {}
