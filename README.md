@@ -225,3 +225,11 @@ GET
 ```bash
 curl  http://localhost:3333/api/cat
 ```
+
+## Configuracion
+
+Despliegue: artifacto (git) + configuracion de entorno LOCAL | DEV | QA | PRO
+
+ficheros json yaml 
+.env
+env vars
