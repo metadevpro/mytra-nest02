@@ -32,10 +32,8 @@ export const matchRoles = (
   endPointRoles: ERoles[],
   userRoles: string[]
 ): boolean => {
-  endPointRoles.forEach((re) => {
-    if (userRoles.find((r) => r === re.toString())) {
-      return true;
-    }
-  });
-  return false;
+  const found = endPointRoles.find((re) =>
+    userRoles.find((r) => r === re.toString())
+  );
+  return !!found;
 };
