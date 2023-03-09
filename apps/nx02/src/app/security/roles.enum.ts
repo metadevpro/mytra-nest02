@@ -1,5 +1,5 @@
 export enum ERoles {
-  Admin,
-  Finance,
-  Operator,
+  Admin = 'Admin',
+  Finance = 'Finance',
+  Operator = 'Operator',
 }

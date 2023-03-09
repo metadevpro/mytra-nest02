@@ -28,7 +28,10 @@ export class RoleGuard implements CanActivate {
   }
 }
 
-const matchRoles = (endPointRoles: ERoles[], userRoles: string[]): boolean => {
+export const matchRoles = (
+  endPointRoles: ERoles[],
+  userRoles: string[]
+): boolean => {
   endPointRoles.forEach((re) => {
     if (userRoles.find((r) => r === re.toString())) {
       return true;
