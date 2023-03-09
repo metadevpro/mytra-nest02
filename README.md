@@ -236,3 +236,6 @@ env vars
 
 
 Usamos configuracion con ficheros .env
+
+Para saber mas: https://12factor.net/es/
+
