@@ -200,3 +200,28 @@ Holliwood Principle.
 nest ->  service  implements OnInit
           onInit()
           {}
+
+
+## DB mongo de ejemplo:
+
+```bash
+docker run --name mongodb -d -p 27017:27017 mongo:latest --storageEngine wiredTiger
+```
+
+## Create with curl
+
+Creacion con CURL:
+
+```bash
+curl -X POST http://localhost:3333/api/cat -H 'Content-type: application/json' -d '{"name" : "cat2","color" : "blue", "breed" : "fish"}'
+```
+
+```bash
+curl -X PUT http://localhost:3333/api/cat/640a147d1e8fe48063f1a5fa -H 'Content-type: application/json' -d '{"name" : "cat2","color" : "dark blue", "breed" : "tuna", "id":"640a147d1e8fe48063f1a5fa"}'
+```
+
+
+GET
+```bash
+curl  http://localhost:3333/api/cat
+```

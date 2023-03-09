@@ -46,9 +46,9 @@ export class CatService implements OnModuleInit {
     return await item.save();
   }
 
-  async update(cat: CatDto): Promise<CatDto> {
+  async update(id: string, cat: CatDto): Promise<CatDto> {
     // return cat;
-    const obj = await this.catModel.findById(cat.id).exec();
+    const obj = await this.catModel.findById(id).exec();
     if (!obj) {
       throw new NotFoundException();
     }

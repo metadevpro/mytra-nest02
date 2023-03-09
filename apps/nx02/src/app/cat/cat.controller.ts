@@ -7,6 +7,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Put,
   Query,
   Res,
 } from '@nestjs/common';
@@ -25,8 +26,13 @@ export class CatController {
   @Roles(ERoles.Admin, ERoles.Finance, ERoles.Operator)
   @OperationId('cat-create')
   @Post()
-  create(@Body() cat: CreateCatDto) {
-    return this.catService.create(cat);
+  async create(@Body() cat: CreateCatDto): Promise<CatDto> {
+    return await this.catService.create(cat);
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() cat: CatDto): Promise<CatDto> {
+    return await this.catService.update(id, cat);
   }
 
   // Pipe de validacion aplicado solo aqui
@@ -36,7 +42,7 @@ export class CatController {
   // }
 
   @Get()
-  findAll(
+  async findAll(
     @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
     @Query(
       'limit',
@@ -45,17 +51,13 @@ export class CatController {
       new LimitValuePipe(500)
     )
     limit: number
-  ): CatDto[] {
-    return this.catService.getAll(offset, limit);
+  ): Promise<CatDto[]> {
+    return await this.catService.getAll(offset, limit);
   }
 
   @Get(':id')
-  findOne(
-    @Param('id', ParseIntPipe) idNumber: number,
-    @Res() res: Response
-  ): void {
-    const id = idNumber.toString();
-    const cat = this.catService.getById(id);
+  async findOne(@Param('id') id: string, @Res() res: Response): Promise<void> {
+    const cat = await this.catService.getById(id);
 
     if (cat) {
       // return cat;
@@ -68,9 +70,9 @@ export class CatController {
   }
 
   @Get('v2/:id')
-  findOne2(@Param() params): CatDto {
+  async findOne2(@Param() params): Promise<CatDto> {
     const id = params.id;
-    const cat = this.catService.getById(id);
+    const cat = await this.catService.getById(id);
 
     if (cat) {
       return cat;
