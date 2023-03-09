@@ -2,13 +2,19 @@ import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { ERoles } from '../roles.enum';
 
+/**
+ * User.roles: string[]
+ */
 @Injectable()
 export class RoleGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   canActivate(context: ExecutionContext): boolean {
-    const roles = this.reflector.get<ERoles[]>('roles', context.getHandler());
-    if (!roles) {
+    const endpointRoles = this.reflector.get<ERoles[]>(
+      'roles',
+      context.getHandler()
+    );
+    if (!endpointRoles) {
       return true;
     }
     const request = context.switchToHttp().getRequest();
@@ -18,7 +24,7 @@ export class RoleGuard implements CanActivate {
       return false;
     }
 
-    return matchRoles(roles, user.roles || []);
+    return matchRoles(endpointRoles, user.roles || []);
   }
 }
 

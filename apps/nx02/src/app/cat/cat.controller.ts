@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 import { LimitValuePipe } from '../pipes/limit-value/limit-value.pipe';
+import { OperationId } from '../security/operation-id.decorator';
 import { Roles } from '../security/roles.decorator';
 import { ERoles } from '../security/roles.enum';
 import { CatDto, CreateCatDto } from './cat.dto';
@@ -22,6 +23,7 @@ export class CatController {
   constructor(private catService: CatService) {}
 
   @Roles(ERoles.Admin, ERoles.Finance, ERoles.Operator)
+  @OperationId('cat-create')
   @Post()
   create(@Body() cat: CreateCatDto) {
     return this.catService.create(cat);

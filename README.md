@@ -112,3 +112,12 @@ KeyCloak
 Saml2
 
 nest -> express -> passport -> 
+
+
+Endpoint -> Role -> Usuario
+
+Endpoint -> User->permisos  /cat wr   lista blanca/negra
+
+KeyCloack
+
+RBAC
