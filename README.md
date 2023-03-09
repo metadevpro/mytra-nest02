@@ -233,3 +233,6 @@ Despliegue: artifacto (git) + configuracion de entorno LOCAL | DEV | QA | PRO
 ficheros json yaml 
 .env
 env vars
+
+
+Usamos configuracion con ficheros .env
