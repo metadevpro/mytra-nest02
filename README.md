@@ -380,3 +380,16 @@ nest -> cors
 
 dev:  localhost -> DES 
 CORS 
+
+
+Content-Security-Policy: default-src 'self'
+
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';
+style-src 'self' https://cdn.fast.com 'unsafe-inline';upgrade-insecure-requests
+
+
+cdn.fast.com/style.css
+
+GET http://www.acme.com:80 //
+GET https://www.acme.com:443 //
+POST SSL
