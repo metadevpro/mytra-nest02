@@ -239,3 +239,144 @@ Usamos configuracion con ficheros .env
 
 Para saber mas: https://12factor.net/es/
 
+
+Para hacer e2e: cypress.io
+
+
+Cache memoria
+  browser   loadBalancer  i1   CO soleado        ---> tiempo CO
+                          i2   CO soleado        ---> tiempo CO
+
+Alta disponiblidad
+  browser   loadBalancer  i1           ---> tiempo CO
+                          i2          
+                         x redis1  CO soleado, 24H
+                           redis2  CO soleado
+                           redis3  CO soleado
+
+
+             fib(n) = fib(n-2) + fib(n-1) / sql / servicio extern   x seg  / 1-3ms
+
+¿por cuanto tiempo cachear?
+  eternamente 30d - math
+  tiempo en CO   3H
+  cliente   ->   3H
+  consustencia eventual 
+
+Redis:Semaforo    v/r
+
+ browser   loadBalancer  i1  s1          ---> tiempo CO
+                         i2          
+                         i3
+
+                         cron/unix    3H  1 fichero
+
+
+Colas:
+
+REST req >  res
+
+web
+cliente -> DTO -> servidor  x
+          <--
+
+
+              Colas Q1                              Workers
+cliente -> DTO   ||                     1 Servidor x
+                  |--a|  Dead-Queue        N Servidor
+
+
+Seguridad
+  Autenticacion  -> 401 Not authenticated.
+        Local --->   la app se encarga    tabla user, pass
+        JWT/OAuth
+
+          Single Sign On
+  
+          CA
+          ISSUER id.acme.com          ---> JWT  ->     JWT.io    { sub:123, name:'Pedro', email:'', work:'develper'. country: 'US', roles: ['rrhh', 'dev', 'sales'] }
+                app1.acme.com
+ audiencia      app2.acme.com  -> 301 Redirect ->  id.acme.com
+                  Authentication: Bearer sdlkaldklasdklaskdlsa maria 20
+                   n
+
+  Autorizacion  -> 403 Not Authorized. Forbidden
+    ¿que permisos tienes?
+      pedro -> admin / operador / solo lectura / role3
+
+RBAC
+  Role Based Access Security
+
+  U -> Role -> Aplicaion
+        Conjunto Permisos
+
+
+        A -> R(admin) -> C.crea.gatos   C/endi
+U -> rol
+
+Para Keycloak -> Openid Client -> https://www.passportjs.org/packages/openid-client/
+
+Encriptacion
+Encriptacion Simetrica
+   A -> f(1234) -> TCF  --> f'(1234)  -> A           AES, TRIPLE DES
+
+Encriptacion Asimetrica                              RSA  1024 2048bis. ECDA curva eliptica El Gamal
+  A  -> enc(pub2)  -> XHAH  --> des(pri2) -> A
+  A  -> enc(pri1)  -> XHAH  --> des(pub1) -> A
+
+  A  -> enc(enc(pri1),pub2)  -> XHAH  --> des(des(pub1), pri2) -> A
+
+SSL/TLS
+https://
+
+SSH/ telnet   rsa
+
+X503.
+
+Persona 1
+  pub1 13  -> publico
+  pri1 (7) *
+
+Persona 2
+  pub2 (23) -->
+  pri2 109  *
+
+Datos personales
+  datos cifrados - LOPD
+  a@aasda,  
+
+tabla
+username    password
+pedroj      sha256:abc:asduiuirewwq23409320  -> abc+1234 ->   SHA256 MD5
+            sha256:zga:9lewrkopi43o2i4o23io
+
+
+CORS:
+  browser  --> wifi publica ---> https://www.acme.com   mismo protocolo, mismo hostname, mismo puerto
+    POST https://www.acme.com/login -->
+    POST https://www.acme.c0m/login -->
+
+    origin: https://www.acme.com:443
+
+1.
+SPA Angular ->  https://www.acme.com      nginx -> estacios
+API:            https://www.acme.com/api  nginx -> contendor
+
+2.
+SPA Angular ->  https://www.acme.com    origin  
+API:            https://api.acme.com    CORS -->   ['https://www.acme.com:443', 'https://w2.abc.es:443', ]
+API:            https://api.weather.org
+
+
+browser <- CORS
+OPTIONS https://api.acme.com/pizza
+
+
+POST    https://api.acme.com/pizza
+
+El serviro es el que autoriza a los clientes basandose en el ORIGIN.
+
+nest -> cors
+
+dev:  localhost -> DES 
+CORS 
