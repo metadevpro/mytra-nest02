@@ -6,13 +6,12 @@ import { AppService } from './app.service';
 import { CatModule } from './cat/cat.module';
 import { configuration } from './config/configuration';
 import { LoggerMiddleware } from './middleware/log.middleware';
-import { SharedModule } from './shared/shared.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
       load: [configuration],
     }),
-    SharedModule,
+    // SharedModule,
     CatModule,
   ],
   controllers: [AppController],
