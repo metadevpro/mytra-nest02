@@ -11,7 +11,25 @@
         "skipFiles": [
           "<node_internals>/**"
         ],
-        "type": "node"
+        "type": "node",
+        "cwd":"${workspaceFolder}"
+      },
+      {
+        "name": "Attach by Process ID",
+        "processId": "${command:PickProcess}",
+        "request": "attach",
+        "skipFiles": ["<node_internals>/**"],
+        "type": "node",
+        "cwd":"${workspaceFolder}"
+      },
+      {
+        "name": "serve",
+        "request": "launch",
+        "runtimeArgs": ["run", "serve"],
+        "runtimeExecutable": "npm",
+        "skipFiles": ["<node_internals>/**"],
+        "type": "node",
+        "cwd":"${workspaceFolder}/apps/nx02"
       }
     ]
 }
