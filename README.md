@@ -402,3 +402,31 @@ POST SSL
 Client  
 GET /
 Accept application/json+v2,html,
+
+
+
+FICHEROS
+IMAGENES
+CHUNK Streams
+GZIP
+
+
+grandes
+    imagenes
+    video 
+    audio
+
+    fs*  db  s3   azure blobs   url
+
+    > 1M
+
+    url. aws.s3.za.amazon.com/sdf?expira=30s&crc
+
+nginx  varnish  node   fs.mp4 
+  gzip                 fs.mp4.gz
+              xml 
+              json
+       compression
+
+
+varnish

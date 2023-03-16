@@ -1,6 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatModule } from './cat/cat.module';
@@ -9,8 +11,12 @@ import { LoggerMiddleware } from './middleware/log.middleware';
 import { HealthController } from './operation/health.controller';
 import { PingController } from './operation/ping.controller';
 import { VersionController } from './operation/version.controller';
+
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, 'assets'),
+    }),
     ConfigModule.forRoot({
       load: [configuration],
     }),
