@@ -14,9 +14,9 @@
         "type": "node"
       },
       {
+        "name": "Nest Debug",
         "type": "node",
         "request": "launch",
-        "name": "Nest Debug",
         "runtimeExecutable": "npm",
         "runtimeArgs": [
           "run",
