@@ -397,3 +397,8 @@ cdn.fast.com/style.css
 GET http://www.acme.com:80 //
 GET https://www.acme.com:443 //
 POST SSL
+
+
+Client  
+GET /
+Accept application/json+v2,html,
