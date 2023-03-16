@@ -11,6 +11,7 @@ import {
   Query,
   Res,
 } from '@nestjs/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { LimitValuePipe } from '../pipes/limit-value/limit-value.pipe';
 import { OperationId } from '../security/operation-id.decorator';
@@ -19,6 +20,7 @@ import { ERoles } from '../security/roles.enum';
 import { CatDto, CreateCatDto } from './cat.dto';
 import { CatService } from './cat.service';
 
+@ApiTags('animal')
 @Controller('cat')
 export class CatController {
   constructor(private catService: CatService) {}
@@ -26,11 +28,21 @@ export class CatController {
   @Roles(ERoles.Admin, ERoles.Finance, ERoles.Operator)
   @OperationId('cat-create')
   @Post()
+  @ApiResponse({
+    status: 201,
+    description: 'The record has been successfully created.',
+  })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
   async create(@Body() cat: CreateCatDto): Promise<CatDto> {
     return await this.catService.create(cat);
   }
 
   @Put(':id')
+  @ApiResponse({
+    status: 200,
+    description: 'The record has been successfully updated.',
+  })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
   async update(@Param('id') id: string, @Body() cat: CatDto): Promise<CatDto> {
     return await this.catService.update(id, cat);
   }
@@ -56,6 +68,11 @@ export class CatController {
   }
 
   @Get(':id')
+  @ApiResponse({
+    status: 200,
+    description: 'The record has been successfully found.',
+  })
+  @ApiResponse({ status: 404, description: 'Not found.' })
   async findOne(@Param('id') id: string, @Res() res: Response): Promise<void> {
     const cat = await this.catService.getById(id);
 
