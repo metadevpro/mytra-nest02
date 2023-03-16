@@ -202,6 +202,10 @@ nest ->  service  implements OnInit
           {}
 
 
+# Debugger en VSCode
+https://stackoverflow.com/questions/49504765/debugging-nest-js-application-with-vscode
+
+
 ## DB mongo de ejemplo:
 
 ```bash

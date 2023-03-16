@@ -5,31 +5,28 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Attach to process",
+        "name": "Attach",
         "port": 9229,
         "request": "attach",
         "skipFiles": [
           "<node_internals>/**"
         ],
-        "type": "node",
-        "cwd":"${workspaceFolder}"
+        "type": "node"
       },
       {
-        "name": "Attach by Process ID",
-        "processId": "${command:PickProcess}",
-        "request": "attach",
-        "skipFiles": ["<node_internals>/**"],
         "type": "node",
-        "cwd":"${workspaceFolder}"
-      },
-      {
-        "name": "serve",
         "request": "launch",
-        "runtimeArgs": ["run", "serve"],
+        "name": "Nest Debug",
         "runtimeExecutable": "npm",
-        "skipFiles": ["<node_internals>/**"],
-        "type": "node",
-        "cwd":"${workspaceFolder}/apps/nx02"
-      }
+        "runtimeArgs": [
+          "run",
+          "serve",
+          "--",
+          "--inspect-brk"
+        ],
+        "console": "integratedTerminal",
+        "restart": true,
+        "autoAttachChildProcesses": true
+      },
     ]
 }
